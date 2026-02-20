@@ -38,7 +38,11 @@ EventWebsite/
 ```
 
 ## Screenshots
+<img width="1225" height="678" alt="Screenshot 2026-02-20 at 17 18 43" src="https://github.com/user-attachments/assets/bb2dfd75-c9ad-4158-9b4f-65ed26006ea5" />
 
+<img width="1208" height="674" alt="Screenshot 2026-02-20 at 17 19 08" src="https://github.com/user-attachments/assets/18fed468-9270-41ea-952d-e8f6afc3893c" />
+
+<img width="1223" height="679" alt="Screenshot 2026-02-20 at 17 19 19" src="https://github.com/user-attachments/assets/ea5439e8-666f-478a-b488-32d6de627e02" />
 
 ## Installation & Setup
 
