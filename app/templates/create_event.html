@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Log a New Event</h1>
+
+     <form action='' method="post" enctype="multipart/form-data" novalidate>
+         {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title }}<br>
+        </p>
+        <p>
+            {{ form.location.label }}<br>
+            {{ form.location }}<br>
+        </p>
+        <p>
+            {{ form.event_date.label }}<br>
+            {{ form.event_date }}<br>
+        </p>
+        <p>
+            {{ form.ticket_price.label }}<br>
+            {{ form.ticket_price }}<br>
+        </p>
+        <p>
+            {{ form.capacity.label }}<br>
+            {{ form.capacity }}<br>
+        </p>
+         <p>
+            {{ form.catering_ind.label }}<br>
+            {{ form.catering_ind }}<br>
+        </p>
+         <p>
+            {{ form.catering.label }}<br>
+            {{ form.catering }}<br>
+        </p>
+         <p>
+            {{ form.attachment.label }}<br>
+            {{ form.attachment }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+
+     </form>
+
+    {% if form.errors %}
+      <ul>
+      {% for field, errors in form.errors.items() %}
+        {% for err in errors %}
+          <li>{{ err }}</li>
+        {% endfor %}
+      {% endfor %}
+      </ul>
+    {% endif %}
+
+<br>
+
+<a href="{{ url_for('index') }}">Home</a>
+
+{% endblock %}

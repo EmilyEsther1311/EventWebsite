@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Event Search</h1>
+
+ <form method="GET">
+        <select name="title" onchange="this.form.submit()">
+            <option value="" selected="selected">All</option>
+            <option value="music"
+                    {% if title=="music"%}selected{%endif%}>
+                Music
+            </option>
+            <option value="comedy"
+                {%if title=="comedy"%}selected{%endif%}>
+                Comedy
+            </option>
+            <option value="theatre"
+                    {% if title=="theatre"%}selected{%endif%}>
+                Theatre
+            </option>
+        </select>
+        <br>
+
+    </form>
+
+{%if events%}
+    <table border="1">
+        <tr>
+             <td>Type of Event</td>
+             <td>Location</td>
+             <td>Date</td>
+             <td>Ticket Price (£)</td>
+             <td>Capacity</td>
+             <td>Catering</td>
+             <td>Catering Type</td>
+             <td>Attachment</td>
+             <td>Delete</td>
+             <td>Update</td>
+        </tr>
+          {% for event in events %}
+             <tr>
+             <td>{{ event.title.capitalize() }}</td>
+             <td>{{ event.location }}</td>
+             <td>{{ event.event_date }} </td>
+             <td>{{ event.ticket_price }} </td>
+             <td>{{ event.capacity }} </td>
+             <td>{{ event.catering_ind.capitalize() }} </td>
+             <td>{{ event.catering }} </td>
+             {% if event.attachment_filename %}
+                 <td><a href="{{ url_for('download_file', filename=event.attachment_filename) }}">{{ event.attachment_filename }}</a></td>
+             {% else %}
+                 <td>None</td>
+             {% endif %}
+                 <td><a href="{{ url_for('delete_event', event_id=event.id) }}">Delete</a></td>
+                 <td><a href="{{ url_for('update_event', event_id=event.id) }}">Update</a></td>
+          {% endfor %}
+        </tr>
+    </table>
+
+{% else %}
+  <p>No events have been added</p>
+{% endif %}
+
+<br>
+<a href="{{ url_for('index') }}">Home</a>
+{% endblock %}

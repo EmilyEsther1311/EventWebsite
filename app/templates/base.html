@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>{{ title }} - Database Example</title>
+    {% else %}
+        <title>Welcome to an Introduction to Databases</title>
+    {% endif %}
+</head>
+
+
+<body>
+
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        <hr> <!-- Horizontal line -->
+        {% endif %}
+    {% endwith %}
+
+    <main>{% block content %}    {% endblock %}</main>
+
+</body>
+</html>

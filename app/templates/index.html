@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Welcome to the Event Management App</h1>
+
+    <ul>
+        <li><a href="{{ url_for('create_event') }}">Add New Event</a></li>
+        <li><a href="{{ url_for('search_event') }}">View Existing Events</a></li>
+    </ul>
+
+{% endblock %}
