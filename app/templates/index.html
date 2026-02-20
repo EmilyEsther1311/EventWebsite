@@ -2,11 +2,23 @@
 
 {% block content %}
 
-    <h1>Welcome to the Event Management App</h1>
+    <div class="px-4 py-5 mt-4 text-center">
+        <h1 class="display-5 fw-bold text-dark mb-3">Welcome to the Event Management App</h1>
 
-    <ul>
-        <li><a href="{{ url_for('create_event') }}">Add New Event</a></li>
-        <li><a href="{{ url_for('search_event') }}">View Existing Events</a></li>
-    </ul>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-5 text-muted">
+                Easily organise, track, and manage all your upcoming events in one place. Choose an option below to get started.
+            </p>
+
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <a href="{{ url_for('create_event') }}" class="btn btn-primary btn-lg px-4 gap-3 shadow-sm">
+                    Add New Event
+                </a>
+                <a href="{{ url_for('search_event') }}" class="btn btn-outline-secondary btn-lg px-4 shadow-sm">
+                    View Existing Events
+                </a>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

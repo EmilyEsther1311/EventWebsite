@@ -2,38 +2,72 @@
 
 {% block content %}
 
-    <h1>Update an Event</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Update Event</h1>
+        <a href="{{ url_for('search_event') }}" class="btn btn-outline-secondary">Cancel</a>
+    </div>
 
-     <form action='' method="post" enctype="multipart/form-data" novalidate>
+     <form action='' method="post" enctype="multipart/form-data" novalidate class="mt-4 p-4 border rounded bg-white shadow-sm">
          {{ form.hidden_tag() }}
-        <p>
-            {{ form.ticket_price.label }}<br>
-            {{ form.ticket_price }}<br>
-        </p>
-         <p>
-            {{ form.catering_ind.label }}<br>
-            {{ form.catering_ind }}<br>
-        </p>
-         <p>
-            {{ form.catering.label }}<br>
-            {{ form.catering }}<br>
-        </p>
-         <p>
-            {{ form.attachment.label }}<br>
-            {{ form.attachment }}<br>
-        </p>
-        <p>{{ form.submit() }}</p>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                {{ form.ticket_price.label(class="form-label fw-bold") }}
+                <div class="input-group">
+                    <span class="input-group-text">£</span>
+                    {{ form.ticket_price(class="form-control") }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+             <div class="col-md-6">
+                {{ form.catering_ind.label(class="form-label fw-bold") }}
+                <div class="ms-2 mt-2">
+                    {% for subfield in form.catering_ind %}
+                        <div class="form-check form-check-inline">
+                            {{ subfield(class="form-check-input") }}
+                            {{ subfield.label(class="form-check-label") }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+             <div class="col-md-6">
+                {{ form.catering.label(class="form-label fw-bold") }}
+                <div class="ms-2 mt-2">
+                    {% for subfield in form.catering %}
+                        <div class="form-check">
+                            {{ subfield(class="form-check-input") }}
+                            {{ subfield.label(class="form-check-label") }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            {{ form.attachment.label(class="form-label fw-bold") }}
+            {{ form.attachment(class="form-control") }}
+            <div class="form-text">Upload a new file to replace the existing one (optional). Images and PDFs only.</div>
+        </div>
+
+        <div class="mb-2 mt-4">
+            {{ form.submit(class="btn btn-primary btn-lg w-100", value="Save Changes") }}
+        </div>
+
     </form>
 
     {% if form.errors %}
-      <ul>
-      {% for field, errors in form.errors.items() %}
-        {% for err in errors %}
-          <li>{{ err }}</li>
-        {% endfor %}
-      {% endfor %}
-      </ul>
+      <div class="alert alert-danger mt-4 shadow-sm">
+          <h5 class="alert-heading">Please correct the following errors:</h5>
+          <ul class="mb-0">
+          {% for field, errors in form.errors.items() %}
+            {% for err in errors %}
+              <li><strong>{{ field|capitalize }}:</strong> {{ err }}</li>
+            {% endfor %}
+          {% endfor %}
+          </ul>
+      </div>
     {% endif %}
-
 
 {% endblock %}
